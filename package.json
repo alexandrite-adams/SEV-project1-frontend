@@ -9,7 +9,7 @@
     "test:unit": "vitest --environment jsdom --root src/",
     "test:e2e": "start-server-and-test preview :4173 'cypress run --e2e'",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "dev": "APP_ENV=development vite",
+    "dev": "cross-env APP_ENV=development vite",
     "preview": "vite preview",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' :4173 'cypress open --e2e'"
   },
@@ -25,6 +25,7 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/test-utils": "^2.2.6",
+    "cross-env": "^7.0.3",
     "cypress": "^12.0.2",
     "eslint": "^8.22.0",
     "eslint-plugin-cypress": "^2.12.1",
