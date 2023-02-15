@@ -44,8 +44,8 @@
       group: null,
       items: [
         {
-          title: 'Foo',
-          value: 'foo',
+          title: 'Fool',
+          value: 'fool',
         },
         {
           title: 'Bar',
