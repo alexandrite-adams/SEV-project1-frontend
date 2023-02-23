@@ -7,6 +7,8 @@
             <v-col cols="10" class="bg-red">
                 <StudentHome></StudentHome>
                 <TestEx></TestEx>
+                <CreateCritique></CreateCritique>
+                
             </v-col>
         </v-row>
     </v-container>
@@ -16,13 +18,16 @@
 import MainNav from "../components/MainNav.vue";
 import StudentHome from "../components/StudentHome.vue";
 import TestEx from "../components/TestEx.vue";
+import CreateCritique from "../components/CreateCritique.vue";
+
 export default {
     name: 'HomeView',
     components: {
         MainNav,
         // StudentHome,
-        TestEx
-    },
+        //TestEx,
+        CreateCritique,
+        },
     data: () => ({
 
     }),
