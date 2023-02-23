@@ -29,38 +29,68 @@
 
             <v-label for = "accuracy_intonation"> <b>Accuracy/Intonation</b>(correct notes with correct rhythm, tuning with keyboard and/or ensemble)</v-label><br>
             <input type="text" id="accuracy_intonation" name="accuracy_intonationComment" value="">
-                <v-label for = "poor_3"> <b>Poor</b></v-label>
                 <input type="radio" id="poor_3" name="accuracy_intonationRating">
-                <v-label for = "fair_3"> <b>Fair</b></v-label>
+                <v-label for = "poor_3"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_3" name="accuracy_intonationRating">
-                <v-label for = "good_3"> <b>Good</b></v-label>
+                <v-label for = "fair_3"> <b>Fair</b></v-label>
                 <input type="radio" id="good_3" name="accuracy_intonationRating">
-                <v-label for = "excellent_3"> <b>Excellent</b></v-label>
+                <v-label for = "good_3"> <b>Good</b></v-label>
                 <input type="radio" id="excellent_3" name="accuracy_intonationRating">
+                <v-label for = "excellent_3"> <b>Excellent</b></v-label>
+
             <br>
             
-            <v-label for = "tone"> <b>Technique</b>(correct notes with correct rhythm, tuning with keyboard and/or ensemble)</v-label><br>
+            <v-label for = "technique"> <b>Technique</b>(correct notes with correct rhythm, tuning with keyboard and/or ensemble)</v-label><br>
             <input type="text" id="technique" name="techniqueComment" value="">
-                <v-label for = "poor_4"> <b>Poor</b></v-label>
                 <input type="radio" id="poor_4" name="techniqueRating">
-                <v-label for = "fair_4"> <b>Fair</b></v-label>
+                <v-label for = "poor_4"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_4" name="techniqueRating">
-                <v-label for = "good_4"> <b>Good</b></v-label>
+                <v-label for = "fair_4"> <b>Fair</b></v-label>
                 <input type="radio" id="good_4" name="techniqueRating">
-                <v-label for = "excellent_4"> <b>Excellent</b></v-label>
+                <v-label for = "good_4"> <b>Good</b></v-label>
                 <input type="radio" id="excellent_4" name="techniqueRating">
+                <v-label for = "excellent_4"> <b>Excellent</b></v-label>
+
             <br>
             
-            <v-label for = "tone"> <b>Technique</b>(correct notes with correct rhythm, tuning with keyboard and/or ensemble)</v-label><br>
-            <input type="text" id="technique" name="techniqueComment" value="">
-                <v-label for = "poor_5"> <b>Poor</b></v-label>
+            <v-label for = "interpretation_musicianship"> <b>Interpretation, Musicianship</b>(phrasing, tempo, dynamics communication, rapport)</v-label><br>
+            <input type="text" id="interpretation_musicianship" name="techniqueComment" value="">
                 <input type="radio" id="poor_5" name="techniqueRating">
-                <v-label for = "fair_5"> <b>Fair</b></v-label>
+                <v-label for = "poor_5"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_5" name="techniqueRating">
-                <v-label for = "good_5"> <b>Good</b></v-label>
+                <v-label for = "fair_5"> <b>Fair</b></v-label>
                 <input type="radio" id="good_5" name="techniqueRating">
-                <v-label for = "excellent_5"> <b>Excellent</b></v-label>
+                <v-label for = "good_5"> <b>Good</b></v-label>
                 <input type="radio" id="excellent_5" name="techniqueRating">
+                <v-label for = "excellent_5"> <b>Excellent</b></v-label>
+            <br>
+
+            <v-label for = "balance_blend"> <b>Balance Blend</b>(with accompanist or within ensemble)</v-label><br>
+            <input type="text" id="balance_blend" name="balance_blendComment" value="">
+                <input type="radio" id="poor_6" name="balance_blendRating">
+                <v-label for = "poor_6"> <b>Poor</b></v-label>
+                <input type="radio" id="fair_6" name="balance_blendRating">
+                <v-label for = "fair_6"> <b>Fair</b></v-label>
+                <input type="radio" id="good_6" name="balance_blendRating">
+                <v-label for = "good_6"> <b>Good</b></v-label>
+                <input type="radio" id="excellent_6" name="balance_blendRating">
+                <v-label for = "excellent_6"> <b>Excellent</b></v-label>
+            <br>
+
+            <v-label for = "diction"> <b>Diction/Articulation (vocal/instrumental)</b>(vowels; constanants, legato, double/triple tongue)</v-label><br>
+            <input type="text" id="diction" name="dictionComment" value="">
+                <input type="radio" id="poor_7" name="dictionRating">
+                <v-label for = "poor_7"> <b>Poor</b></v-label>
+                <input type="radio" id="fair_7" name="dictionRating">
+                <v-label for = "fair_7"> <b>Fair</b></v-label>
+                <input type="radio" id="good_7" name="dictionRating">
+                <v-label for = "good_7"> <b>Good</b></v-label>
+                <input type="radio" id="excellent_7" name="dictionRating">
+                <v-label for = "excellent_7"> <b>Excellent</b></v-label>
+            <br>
+
+            <v-label for = "performance"> <b>Performance and Suggestions</b>(overall readiness to perform)</v-label><br>
+            <input type="text" id="technique" name="techniqueComment" value="">
             <br>
         </v-form>
     </v-container>
