@@ -1,10 +1,12 @@
 <template>
     <v-container fluid class="bg-white">
-    <!-- <v-container fluid class="fill-height bg-white"> -->
+        <!-- <v-container fluid class="fill-height bg-white"> -->
         <v-form>
-        
+            <!-- consider changing radio options to v-selector. Do more researhc on DOM stuff, scripts, and templates. -->
+            <!-- grid would be better practice. Add button at end of form later to dynamically fill other fields based on Jury/Recital/Capstone -->
+            <!-- When something goes off the page, Vue allows for scrolling by default. Can abuse this to load multiple components at a time -->
             <v-label for = "deportment"> <b>Deportment</b>(poise, entrance/exit, bow)</v-label><br>
-            <input type="text" id="deportment" name="deportmentComment" value="">
+            <span class="border"><input type="text" id="deportment" name="deportmentComment" value=""></span>
                 <input type="radio" id="poor_1" name="deportmentRating">
                 <v-label for = "poor_1"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_1" name="deportmentRating">
@@ -16,7 +18,7 @@
             <br>
 
             <v-label for = "tone"> <b>Tone</b>(beauty, control/clarity, vibrato, warmth)</v-label><br>
-            <input type="text" id="tone" name="toneComment" value="">
+            <span class="border"><input type="text" id="tone" name="toneComment" value=""></span>
                 <input type="radio" id="poor_2" name="toneRating">
                 <v-label for = "poor_2"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_2" name="toneRating">
@@ -28,7 +30,7 @@
             <br>
 
             <v-label for = "accuracy_intonation"> <b>Accuracy/Intonation</b>(correct notes with correct rhythm, tuning with keyboard and/or ensemble)</v-label><br>
-            <input type="text" id="accuracy_intonation" name="accuracy_intonationComment" value="">
+            <span class="border"><input type="text" id="accuracy_intonation" name="accuracy_intonationComment" value=""></span>
                 <input type="radio" id="poor_3" name="accuracy_intonationRating">
                 <v-label for = "poor_3"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_3" name="accuracy_intonationRating">
@@ -41,7 +43,7 @@
             <br>
             
             <v-label for = "technique"> <b>Technique</b>(correct notes with correct rhythm, tuning with keyboard and/or ensemble)</v-label><br>
-            <input type="text" id="technique" name="techniqueComment" value="">
+            <span class="border"><input type="text" id="technique" name="techniqueComment" value=""></span>
                 <input type="radio" id="poor_4" name="techniqueRating">
                 <v-label for = "poor_4"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_4" name="techniqueRating">
@@ -54,7 +56,7 @@
             <br>
             
             <v-label for = "interpretation_musicianship"> <b>Interpretation, Musicianship</b>(phrasing, tempo, dynamics communication, rapport)</v-label><br>
-            <input type="text" id="interpretation_musicianship" name="techniqueComment" value="">
+            <span class="border"><input type="text" id="interpretation_musicianship" name="techniqueComment" value=""></span>
                 <input type="radio" id="poor_5" name="techniqueRating">
                 <v-label for = "poor_5"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_5" name="techniqueRating">
@@ -66,7 +68,7 @@
             <br>
 
             <v-label for = "balance_blend"> <b>Balance Blend</b>(with accompanist or within ensemble)</v-label><br>
-            <input type="text" id="balance_blend" name="balance_blendComment" value="">
+            <span class="border"><input type="text" id="balance_blend" name="balance_blendComment" value=""></span>
                 <input type="radio" id="poor_6" name="balance_blendRating">
                 <v-label for = "poor_6"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_6" name="balance_blendRating">
@@ -78,7 +80,7 @@
             <br>
 
             <v-label for = "diction"> <b>Diction/Articulation (vocal/instrumental)</b>(vowels; constanants, legato, double/triple tongue)</v-label><br>
-            <input type="text" id="diction" name="dictionComment" value="">
+            <span class="border"><input type="text" id="diction" name="dictionComment" value=""></span>
                 <input type="radio" id="poor_7" name="dictionRating">
                 <v-label for = "poor_7"> <b>Poor</b></v-label>
                 <input type="radio" id="fair_7" name="dictionRating">
@@ -90,9 +92,11 @@
             <br>
 
             <v-label for = "performance"> <b>Performance and Suggestions</b>(overall readiness to perform)</v-label><br>
-            <input type="text" id="technique" name="techniqueComment" value="">
+            <span class="border"><input type="text" id="technique" name="techniqueComment" value=""></span>
             <br>
-        </v-form>
+            <br><br><br>
+            <v-btn variant="outlined">Save</v-btn><v-btn variant="outlined">Cancel</v-btn>
+            </v-form>
     </v-container>
 </template>
   
