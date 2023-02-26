@@ -12,6 +12,9 @@
           <FacultyCritiqueView
             v-else-if="route === 'View Student Critiques'"
           ></FacultyCritiqueView>
+          <StudentEventList
+            v-else-if="route === 'Event Sign-Ups'"
+          ></StudentEventList>
         </div>
       </v-col>
     </v-row>
@@ -24,6 +27,7 @@ import MainNav from "../components/MainNav.vue";
 import StudentHome from "../components/StudentHome.vue";
 import TestEx from "../components/TestEx.vue";
 import FacultyCritiqueView from "../components/faculty/CritiqueView.vue";
+import StudentEventList from "../components/StudentEventList.vue";
 export default {
   name: "HomeView",
   components: {
@@ -31,6 +35,7 @@ export default {
     StudentHome, //Landing Page for the Students
     TestEx, //
     FacultyCritiqueView,
+    StudentEventList,
   },
   data: () => ({
     role: "",
