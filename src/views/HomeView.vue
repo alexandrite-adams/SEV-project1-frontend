@@ -12,6 +12,9 @@
           <CreateCritique
             v-else-if="route === 'Create Event Critique'"
           ></CreateCritique>
+          <StudentEventList
+            v-else-if="route === 'Event Sign-Ups'"
+          ></StudentEventList>
         </div>
       </v-col>
     </v-row>
@@ -25,6 +28,7 @@ import StudentHome from "../components/StudentHome.vue";
 import TestEx from "../components/TestEx.vue";
 import CreateCritique from "../components/CreateCritique.vue";
 
+import StudentEventList from "../components/StudentEventList.vue";
 export default {
   name: "HomeView",
   components: {
@@ -32,6 +36,7 @@ export default {
     StudentHome, //Landing Page for the Students
     TestEx, //
     CreateCritique,
+    StudentEventList,
   },
   data: () => ({
     role: "",
