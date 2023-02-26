@@ -1,9 +1,16 @@
 <template>
-  <v-select
-    v-model="searchByIndex"
-    label="Search by"
-    :items="searchByList"
-  ></v-select>
+  <v-container>
+    <v-row>
+      <v-col cols="2">
+        <v-select
+          v-model="searchByIndex"
+          label="Search by"
+          :items="searchByList"
+          width="80px"
+        ></v-select>
+      </v-col>
+    </v-row>
+  </v-container>
 
   <v-divider></v-divider>
 
@@ -14,6 +21,10 @@
 export default {
   name: "facultyCritiqueView",
   data: () => ({
+    semesters: [],
+    selectedSemester: {},
+    events: [],
+    selectedEvent: {},
     searchByIndex: null,
     searchByList: ["Event Date", "Student Name"],
   }),
