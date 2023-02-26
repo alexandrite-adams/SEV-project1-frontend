@@ -9,6 +9,9 @@
         <div class="grid-container">
           <StudentHome v-if="route === 'Repertoire'"></StudentHome>
           <TestEx v-else-if="route === 'Your Events'"></TestEx>
+          <CreateCritique
+            v-else-if="route === 'Create Event Critique'"
+          ></CreateCritique>
         </div>
       </v-col>
     </v-row>
@@ -20,12 +23,15 @@
 import MainNav from "../components/MainNav.vue";
 import StudentHome from "../components/StudentHome.vue";
 import TestEx from "../components/TestEx.vue";
+import CreateCritique from "../components/CreateCritique.vue";
+
 export default {
   name: "HomeView",
   components: {
     MainNav, //Left navigation panel
     StudentHome, //Landing Page for the Students
     TestEx, //
+    CreateCritique,
   },
   data: () => ({
     role: "",

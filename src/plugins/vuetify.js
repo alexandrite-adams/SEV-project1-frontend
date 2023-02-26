@@ -5,7 +5,7 @@ import "vuetify/styles";
 const myCustomTheme = {
   dark: false,
   colors: {
-    primary: "#800020",
+    primary: "#80162B",
     cream: "#DADADA",
   },
 };
