@@ -65,7 +65,7 @@ export default defineComponent({
         {
           title: "Faculty",
           links: [
-            "Student Critiques",
+            "View Student Critiques",
             "Create Event Critique",
             "Event Availability",
           ],

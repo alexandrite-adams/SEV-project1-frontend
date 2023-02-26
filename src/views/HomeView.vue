@@ -9,6 +9,9 @@
         <div class="grid-container">
           <StudentHome v-if="route === 'Repertoire'"></StudentHome>
           <TestEx v-else-if="route === 'Your Events'"></TestEx>
+          <FacultyCritiqueView
+            v-else-if="route === 'View Student Critiques'"
+          ></FacultyCritiqueView>
         </div>
       </v-col>
     </v-row>
@@ -27,6 +30,7 @@ export default {
     MainNav, //Left navigation panel
     StudentHome, //Landing Page for the Students
     TestEx, //
+    FacultyCritiqueView,
   },
   data: () => ({
     role: "",
