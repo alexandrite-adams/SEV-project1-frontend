@@ -4,9 +4,9 @@
             <v-col cols="2" class="bg-blue">
                 <MainNav></MainNav>
             </v-col>
-            <v-col cols="10" class="bg-red">
+            <v-col cols="10" class="bg-white">
                 <StudentHome></StudentHome>
-                <TestEx></TestEx>
+                <StudentEventList></StudentEventList>
             </v-col>
         </v-row>
     </v-container>
@@ -15,13 +15,15 @@
 <script>
 import MainNav from "../components/MainNav.vue";
 import StudentHome from "../components/StudentHome.vue";
-import TestEx from "../components/TestEx.vue";
+// import TestEx from "../components/TestEx.vue";
+import StudentEventList from "../components/StudentEventList.vue";
 export default {
     name: 'HomeView',
     components: {
         MainNav,
         // StudentHome,
-        TestEx
+        // TestEx,
+        StudentEventList
     },
     data: () => ({
 
