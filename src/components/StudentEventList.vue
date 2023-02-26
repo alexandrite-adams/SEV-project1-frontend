@@ -129,7 +129,7 @@ export default {
     },
   },
   async mounted() {
-    this.currentDate = new Date(2023, 0, 1);
+    this.currentDate = new Date();
     let dateString = this.currentDate.toISOString().substring(0, 10);
     await this.retrieveEventsDateAndAfter(dateString);
   },
