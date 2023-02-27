@@ -29,13 +29,13 @@
 </template>
 
 <script>
-import HomeView from "./views/HomeView.vue";
+// import HomeView from "./views/HomeView.vue";
 import ocLogo from "/oc_logo_social.png";
 export default {
   name: "App",
   components: {
     ocLogo,
-    HomeView,
+    // HomeView,
   },
   data: () => ({
     title: "OC Music Department",

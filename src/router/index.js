@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-// import LoginPage from "../views/Login.vue";
+import LoginPage from "../views/Login.vue";
 
 const router = createRouter({
   mode: "hash",
@@ -9,11 +9,16 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: "/", //Change to /homeView when Login done
+      path: "/",
+      alias: "/loginPage",
+      component: LoginPage,
+      name: "loginPage",
+    },
+    {
+      path: "/homeView",
       component: HomeView,
       name: "homeView",
     },
-    // { path: "/", component: LoginPage, name: "loginPage" },
   ],
 });
 
