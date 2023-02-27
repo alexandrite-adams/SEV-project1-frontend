@@ -4,7 +4,7 @@ var baseurl = "";
 if (process.env.NODE_ENV === "development") {
   baseurl = "http://localhost:3022/";
 } else {
-  baseurl = "/api/";
+  baseurl = "/";
 }
 
 export default axios.create({
