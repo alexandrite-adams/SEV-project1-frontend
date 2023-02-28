@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col>
-          <h3>{{ event.type }}</h3>
+          <h3>{{ event.type }} trewkjhsdfkhj</h3>
         </v-col>
         <v-col>
           <h3>{{ event.date }}</h3>
@@ -45,7 +45,7 @@ export default {
   name: "student-event-signup",
   data() {
     return {
-      props: ["event"],
+      props: [],
       songs: [],
       dialog: false,
       studentId: "0",
@@ -64,5 +64,6 @@ export default {
         });
     },
   },
+  // mounted() {},
 };
 </script>

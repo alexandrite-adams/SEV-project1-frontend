@@ -41,7 +41,7 @@
           <!-- <p>{{ selectedEventTimes }}</p> -->
           <br />
           <v-btn @click="signUp">Next</v-btn>
-          <StudentEventSignUp v-if="toSignUp"></StudentEventSignUp>
+          <StudentEventSignUp></StudentEventSignUp>
           <!-- Need some logic to get the type of instrument the student is using -->
         </v-col>
       </v-row>
@@ -61,6 +61,9 @@ import StudentEventSignUp from "./StudentEventSignUp.vue";
 // change the name of EventTimeDataService to EventTimeslotDataService
 export default {
   name: "student-event-list",
+  components: {
+    StudentEventSignUp,
+  },
   data: () => ({
     dialog: false,
     search: "",
@@ -69,7 +72,7 @@ export default {
     currentEventTimes: [],
     selectedEventTimes: [],
     currentDate: new Date(),
-    toSignUp: false,
+    toSignUp: true,
   }),
   methods: {
     changeCurrentEvent(event) {
