@@ -12,6 +12,7 @@
           <CreateCritique
             v-else-if="route === 'Create Event Critique'"
           ></CreateCritique>
+          <ViewAdmins v-else-if="route === 'View Admins'"></ViewAdmins>
           <StudentEventList
             v-else-if="route === 'Event Sign-Ups'"
           ></StudentEventList>
@@ -27,7 +28,7 @@ import MainNav from "../components/MainNav.vue";
 import StudentHome from "../components/StudentHome.vue";
 import TestEx from "../components/TestEx.vue";
 import CreateCritique from "../components/CreateCritique.vue";
-
+import ViewAdmins from "../components/ViewAdmins.vue";
 import StudentEventList from "../components/StudentEventList.vue";
 export default {
   name: "HomeView",
@@ -36,6 +37,7 @@ export default {
     StudentHome, //Landing Page for the Students
     TestEx, //
     CreateCritique,
+    ViewAdmins,
     StudentEventList,
   },
   data: () => ({

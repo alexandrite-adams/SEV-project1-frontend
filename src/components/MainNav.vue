@@ -76,7 +76,7 @@ export default defineComponent({
         },
         {
           title: "Admin",
-          links: ["Create Event", "Events"],
+          links: ["Create Event", "Events", "View Admins"],
         },
       ],
     };
