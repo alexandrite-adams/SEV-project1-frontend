@@ -6,7 +6,7 @@
           <v-card-text>
             <h3>View Admins</h3>
             <br />
-            <v-card height="500" width="300" class="scrollable">
+            <v-card height="600" width="800" class="scrollable">
               <v-btn
                 v-for="event in events"
                 :key="event.id"
@@ -49,8 +49,6 @@ export default {
         .catch((e) => {
           console.log(e);
         });
-
-      // Narrow down to events in the future
     },
   },
 };
