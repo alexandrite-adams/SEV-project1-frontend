@@ -20,7 +20,7 @@ export default {
       user: {},
     };
   },
-  created() {},
+  async created() {},
   mounted() {
     this.loginWithGoogle();
   },
@@ -42,7 +42,7 @@ export default {
           theme: "outline",
           size: "large",
           text: "signup_with",
-          width: 400,
+          width: 250,
         }
       );
     },
@@ -56,7 +56,8 @@ export default {
           Utils.setStore("user", this.user);
           this.fName = this.user.fName;
           this.lName = this.user.lName;
-          this.$router.push({ name: "homeView" });
+          // this.$router.push({ name: "homeView" });
+          this.$router.push({ name: "base" });
         })
         .catch((error) => {
           console.log("error", error);
