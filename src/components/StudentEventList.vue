@@ -1,6 +1,13 @@
 <!-- Basically tutorialsList -->
 <template>
   <div>
+    <h2>Event Sign-Up</h2>
+    <br />
+    <p>
+      Please select the event to sign-up for, then select a time slot(s) for
+      that event.
+    </p>
+    <br />
     <v-container>
       <v-row>
         <v-col>
@@ -40,17 +47,17 @@
 
           <!-- <p>{{ selectedEventTimes }}</p> -->
           <br />
-          <v-btn @click="signUp">Next</v-btn>
-          <StudentEventSignUp></StudentEventSignUp>
+
+          <v-btn @click="SignUpForEventObject(currentEvent)">Next</v-btn>
           <!-- Need some logic to get the type of instrument the student is using -->
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
-          <!-- make a button to pass to event signup page https://stackoverflow.com/questions/45484684/vue-js-pass-data-to-component-on-another-route -->
-        </v-col>
-      </v-row>
     </v-container>
+    <p>{{ currentEvent }}</p>
+    <StudentEventSignUp
+      v-if="selectedEvent"
+      :eventOb="currentEvent"
+    ></StudentEventSignUp>
   </div>
 </template>
 
@@ -68,16 +75,27 @@ export default {
     dialog: false,
     search: "",
     events: [],
+    selectedEvent: false,
     currentEvent: {},
     currentEventTimes: [],
     selectedEventTimes: [],
     currentDate: new Date(),
     toSignUp: true,
   }),
+  emits: ["SignUpForEventObject"],
+  setup(props, { emit }) {
+    const SignUpForEventObject = (eventOb) => {
+      emit("SignUpForEventObject", eventOb);
+    };
+    return {
+      SignUpForEventObject,
+    };
+  },
   methods: {
     changeCurrentEvent(event) {
       this.currentEvent = event;
       this.determineEventTimes();
+      this.selectedEvent = true;
       // console.log(this.currentEvent.id);
     },
 
@@ -133,9 +151,10 @@ export default {
           console.log(e);
         });
     },
-    signUp() {
-      this.toSignUp = true;
-    },
+    // signUp() {
+    //   this.toSignUp = true;
+    //   this.emit("SignUpForEventObject", eventOb);
+    // },
   },
   async mounted() {
     this.currentDate = new Date();
