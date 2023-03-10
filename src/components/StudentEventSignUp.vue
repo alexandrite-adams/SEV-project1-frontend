@@ -23,19 +23,39 @@
       </v-row>
     </v-container>
     <h3>Songs</h3>
-    <v-card v-for="song in songs" :key="song.id">
+    <v-card v-for="song in studentSongs" :key="song.id">
       <v-container>
         <v-row>
           <v-col>
-            <v-card>{{ song.composer }}</v-card>
+            <v-combobox
+              clearable
+              v-model="selectedComposers[song.id]"
+              label="Composer"
+              :items="composers"
+              item-value="id"
+              item-title="fName"
+              @update:modelValue="
+                updateAvaliableSongs(song.id, selectedComposers[song.id].id)
+              "
+            >
+            </v-combobox>
+            <p>{{ studentSongs }}</p>
           </v-col>
           <v-col>
-            <v-card>{{ song.title }}</v-card>
+            <v-combobox
+              clearable
+              v-model="songs[selectedComposers[song.id]]"
+              label="Song"
+              :items="songs"
+              item-value="id"
+              item-title="title"
+            >
+            </v-combobox>
           </v-col>
           <v-col>
             <!-- <v-checkbox
               label="translation required"
-              :value="requiresTranslation(song.id)"
+              :model-value="requiresTranslation(song.id)"
             ></v-checkbox> -->
           </v-col>
         </v-row>
@@ -45,7 +65,7 @@
       <!-- <input v-model="translation.text" /> -->
     </v-card>
     <!-- make button work -->
-    <v-btn>Add Song</v-btn>
+    <v-btn @click="addStudentSong">Add Song</v-btn>
   </div>
 </template>
 
@@ -53,6 +73,9 @@
 // Get translations
 // Get songs
 // import StudentDataService from "../services/StudentDataService";
+import ComposersDataService from "../services/ComposersDataService";
+import SongsDataService from "../services/SongsDataService";
+
 export default {
   name: "student-event-signup",
   props: {
@@ -60,42 +83,81 @@ export default {
   },
   data() {
     return {
-      songs: [
-        { title: "song1", composer: "mossypaint", id: 2 },
-        { title: "song2", composer: "troubleshoot", id: 3 },
-      ],
+      // songs: [
+      //   { title: "song1", composer: "mossypaint", id: 1 },
+      //   { title: "song2", composer: "troubleshoot", id: 2 },
+      // ],
+      numOfStudentSongs: 0,
+      studentSongs: [],
+      songs: [],
+      selectedSongs: [],
+      composers: [],
+      selectedComposers: [],
       dialog: false,
       studentId: "0",
       student: { instructor: "Tim", instrument: "Voice" },
     };
   },
-  created() {},
+  created() {
+    this.getComposers();
+    this.addStudentSong();
+  },
   methods: {
-    async requiresTranslation(songId) {
-      await SongTranslationsDataService.getBySongId(parseInt(songId))
+    // async requiresTranslation(songId) {
+    //   // await SongTranslationsDataService.getBySongId(parseInt(songId))
+    //   await SongTranslationsDataService.getBySongId(parseInt("1"))
+    //     .then((response) => {
+    //       console.log(response.data);
+    //       if (response.data != []) {
+    //         return "true";
+    //       } else {
+    //         return "false";
+    //       }
+    //       // this.student = response.data;
+    //       // console.log(this.student);
+    //     })
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // },
+    addStudentSong() {
+      this.studentSongs.push({
+        title: "",
+        composer: "",
+        id: this.numOfStudentSongs,
+      });
+      this.numOfStudentSongs++;
+    },
+    async getComposers() {
+      await ComposersDataService.getAll()
         .then((response) => {
-          if (response.data != []) {
-            return "true";
-          } else {
-            return "false";
-          }
-          // this.student = response.data;
-          // console.log(this.student);
+          this.composers = response.data;
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    async retrieveStudentData() {
-      await StudentDataService.get(parseInt(this.studentId))
+    async updateAvaliableSongs(studentSongId, composerId) {
+      await SongsDataService.getByComposerId(composerId)
         .then((response) => {
-          this.student = response.data;
-          console.log(this.student);
+          this.songs[composerId] = response.data;
         })
         .catch((e) => {
           console.log(e);
         });
+      console.log(this.songs[composerId]);
+      this.studentSongs[studentSongId].composer = composerId.toString();
     },
+    // async retrieveStudentData() {
+    //   await StudentDataService.get(parseInt(this.studentId))
+    //     .then((response) => {
+    //       this.student = response.data;
+    //       console.log(this.student);
+    //     })
+    //     .catch((e) => {
+    //       console.log(e);
+    //     });
+    // },
   },
   // mounted() {},
 };
