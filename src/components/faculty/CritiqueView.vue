@@ -19,9 +19,9 @@
       <v-col cols="4">
         <v-combobox
           clearable
-          v-model="selectedSemester"
+          v-model="pg1selectedSemester"
           label="Semester (optional)"
-          :items="semesters"
+          :items="pg1semesters"
           item-value="id"
           item-title="title"
           @update:modelValue="semesterSearchUpdate()"
@@ -31,9 +31,9 @@
       <v-col cols="4">
         <v-combobox
           clearable
-          v-model="selectedEvent"
+          v-model="pg1selectedEvent"
           label="Events"
-          :items="filteredEvents"
+          :items="pg1filteredEvents"
           item-value="id"
           item-title="title"
           @update:modelValue="eventSearchUpdate()"
@@ -43,10 +43,77 @@
     <v-row>
       <v-col cols="9">
         <v-data-table
-          :headers="stuHeaders"
-          :items="critiques"
+          :headers="pg1stuHeaders"
+          :items="pg1critiques"
           class="elevation-1"
         >
+          <template v-slot:top>
+            <v-toolbar flat>
+              <v-toolbar-title>My CRUD</v-toolbar-title>
+              <v-divider class="mx-4" inset vertical></v-divider>
+              <v-spacer></v-spacer>
+              <v-dialog v-model="dialog" max-width="500px">
+                <v-card v-for="faculty in pg1critiques">
+                  <v-card-title>
+                    <span class="text-h5">{{ faculty.critiquerName }}</span>
+                  </v-card-title>
+
+                  <v-card-text>
+                    <v-container>
+                      <v-text-field
+                        v-model="editedItem.name"
+                        label="Dessert name"
+                      ></v-text-field>
+                    </v-container>
+                  </v-card-text>
+
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue-darken-1" variant="text" @click="close">
+                      Cancel
+                    </v-btn>
+                    <v-btn color="blue-darken-1" variant="text" @click="save">
+                      Save
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+              <v-dialog v-model="dialogDelete" max-width="500px">
+                <v-card>
+                  <v-card-title class="text-h5"
+                    >Are you sure you want to delete this item?</v-card-title
+                  >
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      color="blue-darken-1"
+                      variant="text"
+                      @click="closeDelete"
+                      >Cancel</v-btn
+                    >
+                    <v-btn
+                      color="blue-darken-1"
+                      variant="text"
+                      @click="deleteItemConfirm"
+                      >OK</v-btn
+                    >
+                    <v-spacer></v-spacer>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+            </v-toolbar>
+          </template>
+          <template v-slot:item.actions="{ item }">
+            <v-icon size="small" class="me-2" @click="editItem(item.raw)">
+              mdi-pencil
+            </v-icon>
+            <v-icon size="small" @click="deleteItem(item.raw)">
+              mdi-delete
+            </v-icon>
+          </template>
+          <template v-slot:no-data>
+            <v-btn color="primary" @click="initialize"> Reset </v-btn>
+          </template>
         </v-data-table>
       </v-col>
     </v-row>
@@ -59,15 +126,15 @@ import EventDataService from "../../services/EventDataService";
 export default {
   name: "facultyCritiqueView",
   data: () => ({
-    semesters: [],
-    selectedSemester: null,
-    events: [],
-    filteredEvents: [],
-    selectedEvent: null,
     searchByList: ["Event Date", "Student Name"],
     searchByIndex: null,
-    critiques: [],
-    stuHeaders: [
+    pg1semesters: [],
+    pg1selectedSemester: null,
+    pg1events: [],
+    pg1filteredEvents: [],
+    pg1selectedEvent: null,
+    pg1critiques: [],
+    pg1stuHeaders: [
       { title: "First Name", align: "start", key: "studentFName" },
       { title: "Last Name", align: "start", key: "studentLName" },
       { title: "", align: "start", sortable: false },
@@ -93,7 +160,7 @@ export default {
       await EventDataService.getAll()
         .then((response) => {
           this.events = response.data;
-          this.events.reverse();
+          this.pg1events.reverse();
         })
         .catch((e) => {
           console.log(e);
@@ -101,24 +168,27 @@ export default {
     },
     semesterSearchUpdate() {
       if (
-        this.selectedSemester === null ||
-        this.selectedSemester === undefined
+        this.pg1selectedSemester === null ||
+        this.pg1selectedSemester === undefined
       ) {
-        this.filteredEvents = this.events;
+        this.filteredEvents = this.pg1events;
       } else {
-        if (this.selectedSemester.id !== undefined) {
-          this.filteredEvents = this.events.filter(
-            (obj) => obj.semesterId === this.selectedSemester.id
+        if (this.pg1selectedSemester.id !== undefined) {
+          this.filteredEvents = this.pg1events.filter(
+            (obj) => obj.semesterId === this.pg1selectedSemester.id
           );
         }
       }
     },
     async eventSearchUpdate() {
-      if (this.selectedEvent === null || this.selectedEvent === undefined) {
+      if (
+        this.pg1selectedEvent === null ||
+        this.pg1selectedEvent === undefined
+      ) {
         this.critiques = [];
       } else {
-        if (this.selectedEvent.id !== undefined) {
-          await EventDataService.getCritiques(this.selectedEvent.id)
+        if (this.pg1selectedEvent.id !== undefined) {
+          await EventDataService.getCritiques(this.pg1selectedEvent.id)
             .then((response) => {
               this.critiques = response.data;
             })
@@ -132,9 +202,11 @@ export default {
   async mounted() {
     await this.retrieveAllSemesters();
     await this.retrieveAllEvents();
-    this.semesters.forEach((obj) => (obj.title = obj.year + " - " + obj.code));
-    this.events.forEach((obj) => (obj.title = obj.type + " - " + obj.date));
-    this.filteredEvents = this.events;
+    this.pg1semesters.forEach(
+      (obj) => (obj.title = obj.year + " - " + obj.code)
+    );
+    this.pg1events.forEach((obj) => (obj.title = obj.type + " - " + obj.date));
+    this.filteredEvents = this.pg1events;
   },
   components: {},
 };
