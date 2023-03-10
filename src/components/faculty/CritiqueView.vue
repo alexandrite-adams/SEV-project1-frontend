@@ -41,8 +41,13 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col>
-        <v-data-table :headers="stuHeaders" :items="critiques"></v-data-table>
+      <v-col cols="9">
+        <v-data-table
+          :headers="stuHeaders"
+          :items="critiques"
+          class="elevation-1"
+        >
+        </v-data-table>
       </v-col>
     </v-row>
   </v-container>
@@ -63,10 +68,16 @@ export default {
     searchByIndex: null,
     critiques: [],
     stuHeaders: [
-      { title: "First Name", key: "studentFName" },
-      { title: "Last Name", key: "studentLName" },
+      { title: "First Name", align: "start", key: "studentFName" },
+      { title: "Last Name", align: "start", key: "studentLName" },
+      { title: "", align: "start", sortable: false },
+      { title: "", align: "start", sortable: false },
+      {
+        title: "Action",
+        align: "end",
+        sortable: false,
+      },
     ],
-    stuSearch: "",
   }),
   methods: {
     async retrieveAllSemesters() {
