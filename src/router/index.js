@@ -3,10 +3,7 @@ import Base from "../views/Base.vue";
 import LoginPage from "../views/Login.vue";
 
 const router = createRouter({
-  mode: "history",
-  linkExactActiveClass: "active",
-  base: process.env.NODE_ENV === "development" ? "/" : "/",
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
