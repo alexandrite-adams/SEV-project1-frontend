@@ -150,7 +150,7 @@ export default {
     async retrieveAllSemesters() {
       await SemesterDataService.getAll()
         .then((response) => {
-          this.semesters = response.data;
+          this.pg1semesters = response.data;
         })
         .catch((e) => {
           console.log(e);
@@ -159,7 +159,7 @@ export default {
     async retrieveAllEvents() {
       await EventDataService.getAll()
         .then((response) => {
-          this.events = response.data;
+          this.pg1events = response.data;
           this.pg1events.reverse();
         })
         .catch((e) => {
