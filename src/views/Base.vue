@@ -62,6 +62,9 @@
           <StudentEventList
             v-else-if="route === 'Event Sign-Ups'"
           ></StudentEventList>
+          <CreateCritique
+            v-else-if="route === 'Create Event Critique'"
+          ></CreateCritique>
         </div>
       </v-col>
     </v-row>
@@ -80,6 +83,8 @@ import MainNav from "../components/MainNav.vue";
 import StudentHome from "../components/StudentHome.vue";
 import TestEx from "../components/TestEx.vue";
 import StudentEventList from "../components/StudentEventList.vue";
+import CreateCritique from "../components/CreateCritique.vue";
+
 export default {
   name: "Base",
   components: {
@@ -89,6 +94,7 @@ export default {
     StudentHome, //Landing Page for the Students
     TestEx, //
     StudentEventList,
+    CreateCritique,
   },
   data: () => ({
     user: {},
