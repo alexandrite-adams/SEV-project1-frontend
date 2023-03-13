@@ -1,9 +1,8 @@
 import { createApp } from "vue";
-import { loadFonts } from "./plugins/webfontloader";
-
 import App from "./App.vue";
-import vuetify from "./plugins/vuetify";
-import router from "./router";
+import vuetify from "./plugins/vuetify.js";
+import { loadFonts } from "./plugins/webfontloader.js";
+import router from "./router/index.js";
 
 loadFonts();
 
