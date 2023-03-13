@@ -2,10 +2,11 @@ import http from "./services.js";
 class AdminDataService {
   baseUrl = "/performance-t2/";
 
-  getAllAdmins() {
-    return http.get(this.baseUrl);
-    //Need to join userRole on users where userRole is admin to display data
-  }
+  
+  // getAllAdmins() {
+  //   return http.get(this.baseUrl);
+  //   //Need to join userRole on users where userRole is admin to display data
+  // }
   // get(id) {
   //   return http.get(`/schedule-t2/course/${id}`);
   // }
